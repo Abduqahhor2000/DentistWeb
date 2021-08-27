@@ -1,0 +1,54 @@
+.sign-up-image{
+    height: 100vh;
+    background-color: rgb(221, 145, 51);
+    background-image: url(../img/signUpImage.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 8px;
+}
+
+.user-photo{
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgb(15, 37, 37);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sign-up-form{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-span{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: burlywood;
+    border-radius: 50%;
+    bottom: 0px;
+    right: 20px;
+}
+
+.file-label{
+    width: 100%;
+    height: 100%;
+    font-size: 37px;
+}
+
+.photo-file{
+    display: inline-block;
+    opacity: 0;
+}
+
+.user-img{
+    position: relative;
+}

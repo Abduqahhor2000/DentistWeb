@@ -1,0 +1,18 @@
+.sign-in-right{
+    height: 100vh;
+    padding: 8px;
+}
+
+.sign-in-image{
+    height: 100vh;
+    background-color: bisque;
+    background-image: url(../img/signInImage.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 8px;
+}
+
+.sign-in-form{
+    height: 100vh;
+}
