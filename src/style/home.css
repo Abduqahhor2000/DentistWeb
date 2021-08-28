@@ -22,7 +22,7 @@
 
   .hamburgerMenu{
     font-size: 30px;
-    margin: 4px 1px;
+    margin-left: 4px;
   }
 
   .brand p{
@@ -53,20 +53,20 @@
     flex-wrap: nowrap;
     align-items: center;
     overflow: hidden;
-    padding: 10px 0;
-    border-left: 3px solid transparent;
+    padding: 15px 0;
+    border-left: 2px solid transparent;
     font-size: 24px;
   }
   
   .menu-list ul li:hover{
     background-color: rgb(37, 76, 155);
-    border-left: 3px solid white;
+    border-left: 2px solid white;
     cursor: pointer;
   }
   
   .active-list{
     background-color: rgb(18, 56, 130);
-    border-left: 3px solid white !important;
+    border-left: 2px solid white !important;
   }
   
   .menu-icons{
@@ -169,7 +169,7 @@
     position: relative;
     top: 2px;
     height: 30px;
-    width: 300px;
+    width: 220px;
     font-size: 14px;
     color: rgb(84, 84, 86);
     border: none;
@@ -183,7 +183,7 @@
   .mean-header .search span{
     position: relative;
     top: 3px;
-    margin: 0 10px 0 20px;
+    margin: 0 10px 0 10px;
   }
   
   .user-panel{

@@ -27,10 +27,7 @@ export default function Home () {
        <div className="home">
              <div className="menu">
           <div className="brand"> 
-              <div>
                 <GiHamburgerMenu className="hamburgerMenu" />
-              </div>
-              <p>salom</p>
           </div>
           <div className="menu-list">
               <ul>
