@@ -27,37 +27,24 @@ export default function Home () {
        <div className="home">
              <div className="menu">
           <div className="brand"> 
-            <span>
-              <div></div>
-              <div></div>
-            </span>
-            <h2>Dream Dental</h2>
+              <div>
+                <GiHamburgerMenu className="hamburgerMenu" />
+              </div>
+              <p>salom</p>
           </div>
           <div className="menu-list">
               <ul>
-                  <Link className="router-link" to="/dashboard"><li className=""><MdDashboard className="menu-icons" /> <span>Dashboard</span></li></Link>
-                  <Link className="router-link" to="/balance"><li className="active-list"><BsCreditCard className="menu-icons" /> <span>Balance & Card</span></li></Link>
-                  <Link className="router-link" to="/help"><li className=""><BiHelpCircle className="menu-icons" /> <span>Help & Support</span></li></Link>
-                  <Link className="router-link" to="/invoice"><li className=""><FiFileText className="menu-icons" /> <span>Invoice</span></li></Link>
+                  <Link className="router-link" to="/dashboard"><li className=""><MdDashboard className="menu-icons" /> <span>Home</span></li></Link>
+                  <Link className="router-link" to="/balance"><li className="active-list"><BsCreditCard className="menu-icons" /> <span>Blog</span></li></Link>
+                  <Link className="router-link" to="/help"><li className=""><BiHelpCircle className="menu-icons" /> <span>Services</span></li></Link>
+                  <Link className="router-link" to="/invoice"><li className=""><FiFileText className="menu-icons" /> <span>Cantact us</span></li></Link>
                   <Link className="router-link" to="/setting"><li className=""><FiSettings className="menu-icons" /> <span>Setting</span></li></Link>
               </ul>
-          </div>
-          <div className="manu-footer">
-              <div>© Duweteroz. Inc 2021</div>           
-              <div className="free-link">
-                <div>About</div>
-                <div>Blog</div> 
-                <div>Privacy</div>
-                <div>TOS</div>
-              </div>
           </div>
         </div>
         <div className="mean">
           <div className="mean-header">
             <div className="search">
-              <div>
-                <GiHamburgerMenu />
-              </div>
               <span>
                 <FiSearch />
               </span>
