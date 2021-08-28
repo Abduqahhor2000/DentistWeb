@@ -63,8 +63,7 @@ export default function Home () {
                               </div>
                             </div></> :
                             <>
-                            <Link className="sign sign-in" to="/sign-in"> Sign In </Link>
-                            <Link className="sign sign-up" to="/sign-up"> Sign Up </Link>
+                           
                             </>
               }
              
