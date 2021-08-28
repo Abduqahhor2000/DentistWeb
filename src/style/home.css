@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 .menu {
     width: 250px;
     height: 100vh;
@@ -7,37 +8,60 @@
     overflow: hidden;
     transition: 0.5s;
   }
+
   
   .menu .brand{
     position: relative;
     height: 40px;
-    width: 300px;
+    width: 250px;
     padding: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgb(43, 64, 108);
-    margin-bottom: 30px;
+    transition: 5s;
+  }
+  
+  .brand_close{
+    left: -212px;
   }
 
+  
+  .dreamDental{
+    display: block;
+    font-size: 30px;
+    font-family: 'Kaushan Script', cursive;
+    margin-left: 5px;
+  }
+  
   .hamburgerMenu{
     font-size: 30px;
-    margin-left: 4px;
+    margin-right: 4px;
   }
-
-  .brand p{
-    margin-left: 10px;
+  
+  .hamburgerMenu:hover{
+    cursor: pointer;
+    color: #70a0ec;
+  }
+  .hamburgerMenu:active{
+    cursor: pointer;
+    color: #bed1f0;
+  }
+  
+  .Display_none{
+    display: none;
   }
   
   .menu-list{
     position: relative;
     width: 300px;
+    border-top: 1px solid rgb(43, 64, 108);
+    padding-top: 30px;
   }
   
   .menu-list ul{
     text-decoration: none;
     position: absolute;
-    top: 0px;
+    top: 30px;
     left: 0px;
     width: 100%;
   }
@@ -80,7 +104,7 @@
     display: block;
     width: auto;
     position: relative;
-    margin-left: 30px;
+    margin-left: 20px;
     font-size: 16px;
     letter-spacing: 1px;
   }
@@ -121,6 +145,7 @@
     background-color: #f8f8fb;
     transition: 0.5s;
   }
+  
   
   .mean-header{
     width: 100%;
@@ -189,7 +214,7 @@
   .user-panel{
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
   }
   
@@ -234,7 +259,7 @@
     font-size: 11px;
     color: rgb(145, 145, 145);
   }
-
+  
   .sign{
     padding: 1px 5px 4px;
     border-radius: 10px;
@@ -242,24 +267,24 @@
     color:  blue;
     font-size: 14px;
   }
-
+  
   .sign:hover{
     background-color: #3478e8;
     border-color: #3478e8;
     color: white;
   }
-
+  
   .sign-in{
     margin-right: 10px;
   }
-
+  
   .sign-up{
     margin-right: 20px;
     background-color: rgb(29 89 206);
     color: white;
     border: none;
   }
-
+  
   
   .sign-out{
     border: 1px solid red;
@@ -267,7 +292,7 @@
     color: red;
     padding: 2px 3px 3px;
   }
-
+  
   .sign-out:hover{
     background-color: rgb(235, 92, 92);
     color: white;
@@ -282,4 +307,26 @@
       width: calc(100% - 40px);
       left: 40px;
     }
+  }
+
+  .menu_is_open{
+    width: 250px;
+  }
+  
+  .menu_is_close{
+    width: 40px;
+  }
+
+  .with_menu{
+    width: calc(100% - 250px);
+    left: 250px;
+  }
+  
+  .menu_less{
+    width: calc(100% - 40px);
+    left: 40px;
+  }
+
+  .mean{
+    min-width: 300px;
   }
