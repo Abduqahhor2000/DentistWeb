@@ -3,7 +3,6 @@ import "../style/home.css";
 import { ImExit,
     FiSettings,
     BsBell,
-    FiSearch,
     GiHamburgerMenu,
     AiFillPhone,
     RiHealthBookLine,
