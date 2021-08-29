@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+body{
+  overflow-x: hidden;
+}
+
 .menu {
     width: 250px;
     height: 100vh;
@@ -136,7 +141,7 @@
     top: 0px;
     left: 250px;
     width: calc(100% - 250px);
-    height: 100vh;
+    height: 2000px;
     background-color: #f8f8fb;
     transition: 0.5s;
   }
