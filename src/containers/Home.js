@@ -18,20 +18,14 @@ export default function Home () {
   const userID = useSelector(state => state.user.token);
   const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
-  const [menuButton, setMenuButton] = useState(true);
-  const [useOne, setUseOne] = useState(1);
+  const [menuButton, setMenuButton] = useState("");
   
   const menuHendler = () => {
     const menu = document.querySelector(".menu");
     const brand = document.querySelector(".brand");
     const mean = document.querySelector(".mean");
 
-    if(useOne === 1){
-      setUseOne(0);
-      return;
-    }
-
-    if(menuButton === true){
+     if(menuButton === true){
        menu.style.width = "250px";
        mean.style.width = "calc(100% - 250px)";
        mean.style.left = "250px";
@@ -60,7 +54,7 @@ export default function Home () {
           <div className={`brand`} id="brand"> 
                 <span className={`dreamDental`}>Dream Dental</span>
                 {/* <ImExit onClick={() => {setMenuButton(!menuButton); return}} className={`hamburgerMenu ${(menuButton || (menuButton === "")) ? "" : "Display_none"}`} style={{marginRight: "3px"}} /> */}
-                <GiHamburgerMenu onClick={() => {setMenuButton(!menuButton); return}} className={`hamburgerMenu`} />
+                <GiHamburgerMenu onClick={() => {setMenuButton(!menuButton); }} className={`hamburgerMenu`} />
           </div>
           <div className="menu-list">
               <ul>
