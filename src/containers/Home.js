@@ -28,11 +28,13 @@ export default function Home () {
      if(menuButton === true){
        menu.style.width = "250px";
        mean.style.width = "calc(100% - 250px)";
+       mean.style.minWidth = "300px";
        mean.style.left = "250px";
        brand.style.left = "0px";
     }else if(menuButton === false){
         menu.style.width = "40px";
         mean.style.width = "calc(100% - 40px)";
+        mean.style.minWidth = "300px";
         mean.style.left = "40px";
         brand.style.left = "-212px";
     }else{

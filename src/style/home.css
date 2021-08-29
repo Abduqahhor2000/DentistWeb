@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
-html{
-  display: block;
-  min-width: 100%;
-  width: 100%;
-  max-width: 100%;
+.home{
   overflow: hidden;
 }
 
@@ -145,6 +141,7 @@ html{
     top: 0px;
     left: 250px;
     width: calc(100% - 250px);
+    min-width: 300px;
     height: 2000px;
     background-color: #f8f8fb;
     transition: 0.5s;
@@ -256,14 +253,11 @@ html{
       width: 40px;
     }
     .mean {
-      width: calc(100% - 40px) ;
+      width: calc(100% - 40px);
+      min-width: 300px;
       left: 40px ;
     }
     .brand{
       left: -212px;
     }
-  }
-
-  .mean{
-    min-width: 300px !important;
   }
