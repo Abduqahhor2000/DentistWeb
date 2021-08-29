@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../style/home.css";
-import { ImExit,
+import {
     FiSettings,
     BsBell,
     GiHamburgerMenu,
@@ -46,9 +46,7 @@ export default function Home () {
     }
   }
   
-  useEffect(() => {
-    menuHendler()
-  }, [menuButton]);
+  useEffect(() => menuHendler(), [menuButton]);
 
   const signOutClick = () => {
    dispatch( clearUserID() );
