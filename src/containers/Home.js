@@ -46,8 +46,8 @@ export default function Home () {
     }
   }
   
-  useEffect(() => menuHendler(), [menuButton]);
-
+  useEffect(() => {menuHendler()});
+  
   const signOutClick = () => {
    dispatch( clearUserID() );
   } 
