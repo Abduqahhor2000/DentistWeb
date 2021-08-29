@@ -18,14 +18,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 5s;
-  }
-  
-  .brand_close{
-    left: -212px;
+    transition: 0.5s;
   }
 
-  
   .dreamDental{
     display: block;
     font-size: 30px;
@@ -153,69 +148,17 @@
     border-bottom: 1px solid rgb(241, 241, 241);
     background-color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-  }
-  
-  .mean-header .search {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .mean-header .search div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    color: rgb(58, 58, 58);
-    border: 3px solid rgb(58, 58, 58);
-    border-radius: 3px;
-    margin-left: 15px;
-  }
-  .mean-header .search div:hover{
-    cursor: pointer;
-    background-color:  rgb(12, 37, 86);
-    color: white;
-  }
-  
-  .mean-header .search div:active{
-    background-color:  rgb(32, 81, 179);
-    color: white;
-  }
-  
-  .mean-header .search span{
-    font-size: 20px;
-    color: rgb(84, 84, 86);
-  }
-  
-  .mean-header .search input{
-    position: relative;
-    top: 2px;
-    height: 30px;
-    width: 220px;
-    font-size: 14px;
-    color: rgb(84, 84, 86);
-    border: none;
-    outline: none;
-  }
-  
-  .mean-header .search input:focus{
-    border-bottom: 1px solid rgb(40, 43, 27);
-  }
-  
-  .mean-header .search span{
-    position: relative;
-    top: 3px;
-    margin: 0 10px 0 10px;
   }
   
   .user-panel{
+    width: 200px;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
+    margin: 0px;
   }
   
   .bell-icon{
@@ -307,24 +250,9 @@
       width: calc(100% - 40px);
       left: 40px;
     }
-  }
-
-  .menu_is_open{
-    width: 250px;
-  }
-  
-  .menu_is_close{
-    width: 40px;
-  }
-
-  .with_menu{
-    width: calc(100% - 250px);
-    left: 250px;
-  }
-  
-  .menu_less{
-    width: calc(100% - 40px);
-    left: 40px;
+    .brand{
+      left: -212px;
+    }
   }
 
   .mean{

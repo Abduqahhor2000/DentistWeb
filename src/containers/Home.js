@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../style/home.css";
 import { ImExit,
     FiSettings,
@@ -18,7 +18,37 @@ export default function Home () {
   const userID = useSelector(state => state.user.token);
   const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
-  const [menuButton, setMenuButton] = useState(false);
+  const [menuButton, setMenuButton] = useState(true);
+  const [useOne, setUseOne] = useState(1);
+  
+  const menuHendler = () => {
+    const menu = document.querySelector(".menu");
+    const brand = document.querySelector(".brand");
+    const mean = document.querySelector(".mean");
+
+    if(useOne === 1){
+      setUseOne(0);
+      return;
+    }
+
+    if(menuButton === true){
+       menu.style.width = "250px";
+       mean.style.width = "calc(100% - 250px)";
+       mean.style.left = "250px";
+       brand.style.left = "0px";
+    }else if(menuButton === false){
+        menu.style.width = "40px";
+        mean.style.width = "calc(100% - 40px)";
+        mean.style.left = "40px";
+        brand.style.left = "-212px";
+    }else{
+      return;
+    }
+  }
+  
+  useEffect(() => {
+    menuHendler()
+  }, [menuButton]);
 
   const signOutClick = () => {
    dispatch( clearUserID() );
@@ -26,11 +56,13 @@ export default function Home () {
 
     return (
        <div className="home">
-        <div className={`menu ${menuButton ? "menu_is_open" : "menu_is_close"}`}>
-          <div className={`brand ${menuButton ? "" : "brand_close"}`}> 
+        {/* <div className={`menu ${menuButton ? "menu_is_open" : "menu_is_close"}`}> */}
+        <div className={`menu`} id="menu">
+          {/* <div className={`brand ${menuButton ? "" : "brand_close"}`}>  */}
+          <div className={`brand`} id="brand"> 
                 <span className={`dreamDental`}>Dream Dental</span>
-                <ImExit onClick={() => {setMenuButton(!menuButton); return}} className={`hamburgerMenu ${!menuButton ? "Display_none" : ""}`} style={{marginRight: "3px"}} />
-                <GiHamburgerMenu onClick={() => {setMenuButton(!menuButton); return}} className={`hamburgerMenu ${menuButton ? "Display_none" : ""}`} />
+                {/* <ImExit onClick={() => {setMenuButton(!menuButton); return}} className={`hamburgerMenu ${(menuButton || (menuButton === "")) ? "" : "Display_none"}`} style={{marginRight: "3px"}} /> */}
+                <GiHamburgerMenu onClick={() => {setMenuButton(!menuButton); return}} className={`hamburgerMenu`} />
           </div>
           <div className="menu-list">
               <ul>
@@ -42,14 +74,9 @@ export default function Home () {
               </ul>
           </div>
         </div>
-        <div className={`mean ${menuButton ? "with_menu" : "menu_less"}`}>
+        {/* <div className={`mean ${menuButton ? "with_menu" : "menu_less"}`}> */}
+        <div className={`mean`} id="mean">
           <div className="mean-header">
-            {/* <div className="search">
-              <span>
-                <FiSearch />
-              </span>
-              <input type="text" placeholder="Search something..."/>
-            </div> */}
             <div className="user-panel">
               {
                 (userID) ? <><div className="bell-icon">
