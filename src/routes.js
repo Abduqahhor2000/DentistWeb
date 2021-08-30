@@ -1,46 +1,46 @@
-import Dashboard from "./containers/Dashboard";
-import Balance from './containers/Balance';
-import Help from "./containers/Help";
-import Invoice from "./containers/Invoice";
-import Setting from "./containers/Setting";
 import Home from "./containers/Home";
+import Blog from './containers/Blog';
+import Services from "./containers/Services";
+import Cantact_us from "./containers/Cantact_us";
+import Settings from "./containers/Settings";
+import Panel from "./containers/Panel";
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
 
 const routes = {
     menu: [
         {
-            key: "dashboard",
-            path: "/dashboard",
-            component: Dashboard,
+            key: "home",
+            path: "/home",
+            component: Home,
             exact: true,
             icon: null,
         },
         {
-            key: "balance",
-            path: "/balance",
-            component: Balance,
+            key: "blog",
+            path: "/blog",
+            component: Blog,
             exact: true,
             icon: null,
         },
         {
-            key: "help",
-            path: "/help",
-            component: Help,
+            key: "services",
+            path: "/services",
+            component: Services,
             exact: true,
             icon: null,
         },
         {
-            key: "invoice",
-            path: "/invoice",
-            component: Invoice,
+            key: "cantact_us",
+            path: "/cantact_us",
+            component: Cantact_us,
             exact: true,
             icon: null,
         },
         {
-            key: "setting",
-            path: "/setting",
-            component: Setting,
+            key: "settings",
+            path: "/settings",
+            component: Settings,
             exact: true,
             icon: null,
         }
@@ -61,9 +61,9 @@ const routes = {
         icon: null,
     },
     {
-        key: "home",
-        path: ["/", "/home"],
-        component: Home,
+        key: "panel",
+        path: ["/", "/panel"],
+        component: Panel,
         exact: false,
         icon: null,
     }

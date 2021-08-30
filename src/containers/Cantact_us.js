@@ -1,8 +1,7 @@
 import React from "react";
-import "../style/balance.css"
+import "../style/cantact_us.css"
 
-export default function Balance() {
-
+export default function Cantact_us () {
     return(
         <div className="coming-soon">
             <h1>Coming soon...</h1>

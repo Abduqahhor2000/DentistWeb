@@ -1,7 +1,7 @@
 import React from "react";
-import "../style/invoice.css";
+import "../style/settings.css"
 
-export default function Invoice () {
+export default function Settings () {
     return(
         <div className="coming-soon">
             <h1>Coming soon...</h1>
