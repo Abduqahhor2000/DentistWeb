@@ -12,7 +12,7 @@ export default function Blog() {
                 <h1>Oxirgi maqola</h1>
                 <div className="card">
                     <div className="photo">
-                        <img src="https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605" />
+                        <img src="https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605" alt="" />
                     </div>
                     <div className="blog_mean">
                         <div className="title">
