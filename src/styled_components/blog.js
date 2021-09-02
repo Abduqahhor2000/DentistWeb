@@ -4,14 +4,24 @@ const BlogComponent = {};
 
 BlogComponent.LastArticle = styled.section`
     & {
-        width: 900px;
+        width: 820px;
         min-width: 300px;
         height: auto;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
         align-items: center;
-
+        @media (max-width: 1220px){
+            flex-direction: column;
+        }
+        @media (max-width: 899px){
+            width: 360px;
+            flex-direction: column;
+        }
+        @media (max-width: 500px){
+            width: 300px;
+        }
+        
         h1{
             font-size: 24px;
             margin: 20px 0 10px;
@@ -31,12 +41,11 @@ BlogComponent.LastArticle = styled.section`
             overflow: hidden;
             box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
-     
-            @media (max-width: 1170px){
+            @media (max-width: 899px){
                 width: 360px;
                 flex-direction: column;
             }
-            @media (max-width: 650px){
+            @media (max-width: 500px){
                 width: 300px;
             }
         }
@@ -46,19 +55,15 @@ BlogComponent.LastArticle = styled.section`
             height: 240px;
             padding: 15px;
             align-self: center;
-     
+            @media (max-width: 899px){
+                width: 100%;
+                height:auto;
+            }
+            
             h2 {
                 margin: 0;
                 line-height: 22px;
                 margin-bottom: 5px;
-            }
-     
-            @media (max-width: 1170px){
-                height: auto;
-                width: 100%;
-            }
-            @media (max-width: 650px){
-                
             }
         }
      
@@ -67,8 +72,7 @@ BlogComponent.LastArticle = styled.section`
             min-width: 300px;
             height: 240px;
             background-color: #3b3b3b;
-
-            @media (max-width: 650px){
+            @media (max-width: 500px){
                 width: 300px;
                 height:200px;
             }
@@ -136,9 +140,6 @@ BlogComponent.LastArticle = styled.section`
             top: 3px;
         }
 
-        @media (max-width: 1170px){
-            width: 360px;
-        }
    }
 
   
@@ -148,6 +149,22 @@ BlogComponent.YouLikeArticles = styled.section`
     & {
         width: 300px;
         height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        @media (max-width: 1220px){
+            width: 810px;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+        @media (max-width: 899px){
+            width: 300px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
        
         h2{
             font-size: 24px;

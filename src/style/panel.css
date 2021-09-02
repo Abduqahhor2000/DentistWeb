@@ -193,9 +193,14 @@
   }
   
   .user-image{
+    display: block;
+    position: relative;
     width: 35px;
     height: 35px;
     border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .user-name{
@@ -209,11 +214,13 @@
     font-weight: 600;
     font-size: 12px;
     margin-bottom: 3px;
+    line-height: 12px;
   }
   
   .user-name p:nth-child(2){
     font-size: 11px;
     color: rgb(145, 145, 145);
+    line-height: 12px;
   }
   
   .sign{
@@ -246,7 +253,6 @@
     border: 1px solid red;
     background-color: white;
     color: red;
-    padding: 2px 3px 3px;
   }
   
   .sign-out:hover{
@@ -267,4 +273,20 @@
     .brand{
       left: -212px;
     }
+  }
+
+  .mean_footer{
+    width: 100%;
+    height: 80px;
+    background-color: #0c2556;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  .mean_footer > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }

@@ -10,13 +10,6 @@ import SignUp from "./containers/SignUp";
 const routes = {
     menu: [
         {
-            key: "home",
-            path: "/home",
-            component: Home,
-            exact: true,
-            icon: null,
-        },
-        {
             key: "blog",
             path: "/blog",
             component: Blog,
@@ -42,6 +35,13 @@ const routes = {
             path: "/settings",
             component: Settings,
             exact: true,
+            icon: null,
+        },
+        {
+            key: "home",
+            path: "/home",
+            component: Home,
+            exact: false,
             icon: null,
         }
     ],

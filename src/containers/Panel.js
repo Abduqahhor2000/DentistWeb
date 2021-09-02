@@ -9,7 +9,7 @@ import {FaTooth,
     FiTwitch,
     AiOutlineHome,
    } from 'react-icons/all';
-import { Redirect, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import routes from '../routes';
 import { useDispatch, useSelector } from "react-redux";
 import { clearUserID } from "../store/actions/userIdAction";
@@ -71,7 +71,6 @@ export default function Panel () {
               </ul>
           </div>
         </div>
-        {/* <div className={`mean ${menuButton ? "with_menu" : "menu_less"}`}> */}
         <div className={`mean`} id="mean">
           <div className="mean-header">
             <div className="user-panel">
@@ -80,7 +79,7 @@ export default function Panel () {
                               <BsBell />
                             </div>
                             <div className="user-info">
-                              <img src={user.photoURL} className="user-image" alt=""></img>
+                              <div style={{backgroundImage: `url(${user.photoURL})`}} className="user-image" />
                               <div className="user-name">
                                 <p>{user.displayName}</p>
                                 <p>{user.isAdmin ? "Admin" : "Customer"} <button onClick={signOutClick} className="sign-out">Sign Out</button></p>
@@ -94,7 +93,6 @@ export default function Panel () {
              
             </div>
           </div>
-          <Redirect to="/home" />
           <Switch>
               {routes.menu.map(item => {
                 return(
@@ -102,6 +100,16 @@ export default function Panel () {
                 )
               })}  
           </Switch>
+          <div className="mean_footer">
+              <div>
+                <div>
+                    Created by <a href="https://Abduqahhor.uz">Abduqahhor.uz</a>
+                </div>
+                <div>
+                    2021 
+                </div>
+              </div>
+          </div>
          </div>
        </div>
     );

@@ -1,543 +1,62 @@
 import React from "react";
 import "../style/blog.css"
 import BlogComponent from "../styled_components/blog";
-import {BsFillHeartFill, BsHeart, FaShareAlt, BsEye, CgComment} from "react-icons/all";
+import ArticleCard from "../components/ArticleCard";
+// import MiniArticleCard from "../components/MiniArticleCard";
+// import { collection, getDocs } from "firebase/firestore"; 
+// import { db } from "../configs/firebase";
+// import { useState } from "react";
 
 export default function Blog() {
+    // const [data, setData] = useState([]);
+    
+    // const getDoc = async () => {
+    //     try{
+    //         const querySnapshot = await getDocs(collection(db, "articles"));
+    //         querySnapshot.forEach((doc) => {
+    //              setData([...data, doc.data()]);
+    //         })
+    //     }catch(error){
+    //         console.log(error);
+    //     }
+    // }
 
     return(
     <div className="BlogPage">
         <BlogComponent.LastArticle>
-            <div className="blog_card">
+            {/* <div className="blog_card">
                 <h1>Last Articles</h1>
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")`  }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <div className="title">
-                            <h2>Salomatlik bu harakat garovi. shunday ekan. yotib damingizni oling.</h2>
-                        </div>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/> 142</span>
-                                <span><CgComment className="comment"/> 5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text">
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like...
-                            </p>
-                        </div> 
-                    </div>
-                </div>       
-            </div> 
+                <button onClick={getDoc}>Geeeet!</button>
+                {data.map((item) => {
+                    return(
+                        <>
+                            <ArticleCard article={item} />
+                        </>
+                    )
+                })}
+            </div>  */}
+            <ArticleCard />
+            <ArticleCard />
+            <ArticleCard />
+            <ArticleCard />
+            <ArticleCard />
+            <ArticleCard />
+            <ArticleCard />
         </BlogComponent.LastArticle>
-        <BlogComponent.YouLikeArticles>
-            <h2>You Like Articles</h2>
-            <div className="Articles">
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><br/><br/>
-            <h2>Most Read Articles</h2>
-            <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div className="card">
-                    <div className="photo">
-                        <img style={{backgroundImage: `url("https://media.istockphoto.com/photos/healthcare-and-medicine-concept-picture-id1147579605")` }} alt="" />
-                    </div>
-                    <div className="blog_mean">
-                        <h4>Shunday bo'lib turadi endi. nishetasan axir. asta asta bo'luvradi biyag'ina</h4>
-                        <div className="status">
-                            <div className="info">
-                                <span className="date">31.08.2021</span>
-                                <span><BsEye className="view"/>142</span>
-                                <span><CgComment className="comment"/>5</span>
-                            </div>
-                            <div className="like_share">
-                                <div>
-                                    <BsFillHeartFill className="like liked Display_none"/>
-                                    <BsHeart className="like"/>
-                                    <span> 73</span>
-                                </div>
-                                <div>
-                                    <FaShareAlt className="share"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </BlogComponent.YouLikeArticles>
+        {/* <BlogComponent.YouLikeArticles>           
+            <div className="YouLike">
+                <h2>These You Like</h2>
+                <MiniArticleCard />
+                <MiniArticleCard />
+                <MiniArticleCard />
+           </div><br/>
+            <div className="MostRead">
+                <h2>Read A Lot</h2>
+                <MiniArticleCard />
+                <MiniArticleCard />
+                <MiniArticleCard />
+             </div>
+        </BlogComponent.YouLikeArticles>  */}
     </div>
     );      
 }

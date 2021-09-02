@@ -5,3 +5,25 @@
     flex-wrap: wrap;
     align-items: flex-start;
 }
+
+@media (max-width: 1220px) {
+    .BlogPage{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+@media (max-width: 899px) {
+    .BlogPage{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+}
+@media (max-width: 770px) {
+    .BlogPage{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
