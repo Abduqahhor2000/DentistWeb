@@ -27,3 +27,11 @@
         align-items: center;
     }
 }
+.isLoadBlogPage{
+    width: 100%;
+    height: calc(100% - 40px);
+    background-color: rgb(202, 202, 202);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

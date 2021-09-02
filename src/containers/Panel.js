@@ -89,14 +89,13 @@ export default function Panel () {
                               <Link className="sign sign-in" to="/sign-in"> Sign In </Link>
                               <Link className="sign sign-up" to="/sign-up"> Sign Up </Link>
                             </>
-              }
-             
+              }     
             </div>
           </div>
           <Switch>
               {routes.menu.map(item => {
                 return(
-                  <Route {...item} />
+                  <Route {...item} component={null} render={route => <item.component {...route} />} />
                 )
               })}  
           </Switch>

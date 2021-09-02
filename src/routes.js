@@ -6,6 +6,7 @@ import Settings from "./containers/Settings";
 import Panel from "./containers/Panel";
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
+import ViewArticle from "./components/ViewArticle";
 
 const routes = {
     menu: [
@@ -13,6 +14,13 @@ const routes = {
             key: "blog",
             path: "/blog",
             component: Blog,
+            exact: true,
+            icon: null,
+        },
+        {
+            key: "viewArticle",
+            path: "/blog/:id",
+            component: ViewArticle,
             exact: true,
             icon: null,
         },

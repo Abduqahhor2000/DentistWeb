@@ -258,11 +258,11 @@ BlogComponent.YouLikeArticles = styled.section`
                 }
             }
         }
-
-
     }
-
 `;
 
+BlogComponent.ViewArticle = styled.section`
+    
+`;
 
 export default BlogComponent;
