@@ -9,13 +9,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { addArticles } from "../store/actions/articlesAction";
 
 export default function Blog() {
-    const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
-    const articles = useSelector((state) => state.articles.articles);
+    const [isLoading, setIsLoading] = useState(true);
+    const [articles, setArticles] = useState([]);
+    const reduxArticles = useSelector((state) => state?.articles?.articles);
+     
     useEffect(() => {
-        if(isLoading){
-             getDoc();
+        if(isLoading === true && reduxArticles.length === 0){
+            getDoc();
+            return;
         }
+        if(isLoading){
+            setArticles(reduxArticles);
+            setIsLoading(false);
+        }     
     });
     
     const getDoc = async () => {
@@ -41,7 +48,7 @@ export default function Blog() {
                     {articles.map((item) => {
                         return(
                             <>
-                                <ArticleCard article={item} />
+                                <ArticleCard article={item} key={item.id} />
                             </>
                         )
                     })}

@@ -148,7 +148,7 @@
     top: 0px;
     left: 250px;
     width: calc(100% - 250px);
-    min-width: 300px;
+    min-width: 310px !important;
     height: auto;
     background-color: #f8f8fb;
     transition: 0.5s;

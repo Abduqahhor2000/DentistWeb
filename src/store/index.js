@@ -3,6 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"
 import userIdReducer from "./reducers/userIdReducer";
+import articlesReducer from "./reducers/articlesReducer";
 import logger from 'redux-logger';
 import thunk from "redux-thunk";
 
@@ -13,6 +14,7 @@ const persistConfig = {
 }
 const rootReducer = combineReducers({
     user: userIdReducer,
+    articles: articlesReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

@@ -5,8 +5,8 @@ export default function ArticleCard(props) {
     const article = props.article;
 
     return(
-        <>
-            <div className="card">
+        <div key={article.id}>
+            <div className="card" >
                 <div className="photo">
                     <img style={{backgroundImage: `url(${article.text.banner.photo})`}} alt="" />
                 </div>
@@ -38,7 +38,7 @@ export default function ArticleCard(props) {
                     </div> 
                 </div>
             </div>   
-        </> 
+        </div> 
     )
 }
 
