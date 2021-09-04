@@ -2,26 +2,41 @@ import React, { useEffect, useState } from "react";
 import BlogComponent from "../styled_components/blog";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
+import { doc, getDoc } from "firebase/firestore"; 
+import { db } from "../configs/firebase";
 
 export default function ViewArticle () {
     const params = useParams();
     console.log(params);
     const [converted, setCanverted] = useState([]);
-    
-    
-    const article =  useSelector(async (state) => { 
-        const demoData = await state.articles.articles.find( (item) => {
-            if(item.id === params.id){
-                return true;
-            }
-            return false;
-        });
-
-        return demoData;
+    const [isLoading, setIsLoading] = useState({});
+    const [article, setArticle] = useState();
+    const mamArticle =  useSelector((state) => { 
+        if (state?.articles?.articles){
+            const demoData = state.articles.articles.find((item) => {
+                if(item.id === params.id){
+                    return true;
+                }
+                return false;
+            });
+            return demoData;
+        }
+        return false; 
     });
-
-    console.log( article);
-    console.log( article);
+    
+    const getArticle = async () => {
+        try{
+            if(mamArticle){
+                setArticle(mamArticle);
+            }
+            const docRef = doc(db, "articles", params.id);
+            const docSnap = await getDoc(docRef);
+            console.log(docSnap.data());
+            setArticle(docSnap.data());
+        }catch (error){
+            console.log(console.log("bu o'sha", error))
+        }
+    }
     
     const converting = () => {  
         const convertation = article.text.meanText.map((item) => {
@@ -41,32 +56,43 @@ export default function ViewArticle () {
             }
         });
         setCanverted(convertation);
+        setIsLoading(false);
     }
 
     
     useEffect(() => {
-        converting();
-    }, [])
+        if(isLoading){
+            getArticle();
+            if(article){
+                converting();
+            }
+        }
+       
+    });
     
     
     return(
-        <div>
-            <BlogComponent.ViewArticle>
+        <>
+            {isLoading ? <div>salom</div> :
                 <div>
-                    <div>
+                    <BlogComponent.ViewArticle>
                         <div>
-                            <h2>{article.text.headerText}</h2>
+                            <div>
+                                <div>
+                                    <h2>{article.text.headerText}</h2>
+                                </div>
+                                {converted}
+                            </div>
+                            <div className="comments">
+        
+                            </div>
                         </div>
-                        {converted}
-                    </div>
-                    <div className="comments">
-
-                    </div>
-                </div>
-                <div>
-
-                </div>
-            </BlogComponent.ViewArticle>
-        </div>
+                        <div>
+        
+                        </div>
+                    </BlogComponent.ViewArticle>
+                </div>}
+        </>
+        
     )
 }
