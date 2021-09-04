@@ -15,18 +15,19 @@ export default function Blog() {
     const reduxArticles = useSelector((state) => state?.articles?.articles);
      
     useEffect(() => {
-        if(isLoading === true && reduxArticles.length === 0){
-            getDoc();
-            return;
-        }
         if(isLoading){
-            setArticles(reduxArticles);
-            setIsLoading(false);
-        }     
+            getDoc();
+        }
     });
     
     const getDoc = async () => {
         try{
+            if(reduxArticles?.length > 0){
+                setArticles(reduxArticles);
+                console.log(reduxArticles);
+                setIsLoading(false);
+                return;
+            }
             const querySnapshot = await getDocs(collection(db, "articles"));
             let articles = [];
             querySnapshot.forEach((doc) => {

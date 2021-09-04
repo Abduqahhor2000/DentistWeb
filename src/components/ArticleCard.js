@@ -1,5 +1,6 @@
 import React from "react";
 import {BsFillHeartFill, BsHeart, FaShareAlt, BsEye, CgComment} from "react-icons/all";
+import { Link } from "react-router-dom";
 
 export default function ArticleCard(props) {
     const article = props.article;
@@ -8,11 +9,11 @@ export default function ArticleCard(props) {
         <div key={article.id}>
             <div className="card" >
                 <div className="photo">
-                    <img style={{backgroundImage: `url(${article.text.banner.photo})`}} alt="" />
+                    <Link to={`/blog/${article.id}`}><img style={{backgroundImage: `url(${article.text.banner.photo})`}} alt=""/></Link>
                 </div>
                 <div className="blog_mean">
                     <div className="title">
-                        <h2>{article.text.headerText}</h2>
+                    <Link to={`/blog/${article.id}`}><h2>{article.text.headerText}</h2></Link>
                     </div>
                     <div className="status">
                         <div className="info">
