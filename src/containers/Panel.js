@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../style/panel.css";
+import { Route, Switch, Link } from 'react-router-dom';
+import routes from '../routes';
+import { useDispatch, useSelector } from "react-redux";
+import { clearUserID } from "../store/actions/userIdAction";
 import {FaTooth,
     FiSettings,
     BsBell,
@@ -9,10 +13,6 @@ import {FaTooth,
     FiTwitch,
     AiOutlineHome,
    } from 'react-icons/all';
-import { Route, Switch, Link } from 'react-router-dom';
-import routes from '../routes';
-import { useDispatch, useSelector } from "react-redux";
-import { clearUserID } from "../store/actions/userIdAction";
 
 export default function Panel () {
   const userID = useSelector(state => state.user.token);

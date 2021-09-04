@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../style/blog.css"
 import BlogComponent from "../styled_components/blog";
 import ArticleCard from "../components/ArticleCard";
@@ -9,9 +9,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { addArticles } from "../store/actions/articlesAction";
 
 export default function Blog() {
-    const [isloading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
     const articles = useSelector((state) => state.articles.articles);
+    useEffect(() => {
+        getDoc();
+    });
     
     const getDoc = async () => {
         try{
@@ -27,7 +30,8 @@ export default function Blog() {
         }
     }
 
-    return(
+    return(<>
+    {isLoading ? <div>salom</div> : 
         <div className="BlogPage">
             <BlogComponent.LastArticle>
                  <div className="blog_card">
@@ -55,6 +59,6 @@ export default function Blog() {
                     <MiniArticleCard />
                  </div>
             </BlogComponent.YouLikeArticles>  */}
-        </div>
-    );      
+        </div>}
+    </>);      
 }
