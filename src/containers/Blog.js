@@ -13,7 +13,9 @@ export default function Blog() {
     const dispatch = useDispatch();
     const articles = useSelector((state) => state.articles.articles);
     useEffect(() => {
-        getDoc();
+        if(isLoading){
+             getDoc();
+        }
     });
     
     const getDoc = async () => {

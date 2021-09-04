@@ -5,17 +5,23 @@ import { useSelector } from "react-redux";
 
 export default function ViewArticle () {
     const params = useParams();
+    console.log(params);
     const [converted, setCanverted] = useState([]);
     
     
-    const article = useSelector((state) => { 
-        return  state.articles.articles.find( (item) => {
+    const article =  useSelector(async (state) => { 
+        const demoData = await state.articles.articles.find( (item) => {
             if(item.id === params.id){
                 return true;
             }
             return false;
         });
+
+        return demoData;
     });
+
+    console.log( article);
+    console.log( article);
     
     const converting = () => {  
         const convertation = article.text.meanText.map((item) => {
