@@ -262,6 +262,226 @@ BlogComponent.YouLikeArticles = styled.section`
 `;
 
 BlogComponent.ViewArticle = styled.section`
+    & {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: top;
+
+        .article_window{
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            
+            .article{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .header_text{
+                    width: 100%;
+                    margin: 0;
+
+                    h2{
+                        font-size: 30px;
+                        line-height: 36px;
+                    }
+                }
+                .status{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    color: #979797;
+                    margin: 5px 0 30px;
+
+                    .info{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 220px;
+    
+                        .comment{
+                            width: 25px;
+                            font-size: 16px;
+                            position: relative;
+                            top: 3px;    
+                        }
+    
+                        .view {
+                            font-size: 16px;
+                            position: relative;
+                            top: 3px; 
+                        }
+                    }
+    
+                    .like_share{
+                        display: flex;
+                        justify-content: space-around;
+                        width: 180px;
+    
+                        .like{
+                            font-size: 16px;
+                            position: relative;
+                            top: 3px; 
+                            color: #ff4949;
+                        }
+    
+                        .share{
+                            width: 25px;
+                            font-size: 16px;
+                            color: #1d59ce;
+                            position: relative;
+                            top: 2px;
+                        }
+                    }
+                }
+                .text{
+                    width: 100%;
+                    margin-bottom: 30px;
+
+                    p{
+                        font-size: 18px;
+                    }
+                }
+                .article_photo{
+                    width: 100%;
+                    margin-bottom: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .video{
+                    width: 100%;
+                    margin-bottom: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    iframe{
+                        width: 700px;
+                        height: 400px;
+                    }
+                }
+            
+            }
+            .comments{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                
+
+                .input{
+                    width: 700px;
+                    height: auto;
+                    background-color: #0c2556;
+                    padding: 10px;
+                    border-radius: 10px 10px 0 0;
+
+                    div{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-bottom: 10px;
+
+                        span{
+                            font-size: 22px;
+                            color: white;
+                            margin-right: 10px;
+                        }
+                        .comment_icon{
+                            position: relative;
+                            top: 1px;
+                        }
+                    }
+                    input{
+                        display: inline-block;
+                        width: 620px;
+                        padding-left: 10px;
+                        height: 40px;
+                    }
+                    button{
+                        width: 60px;
+                        height: 40px;
+                        font-size: 30px;
+                        position: relative;
+                        top: 11px;
+                    }
+                    .send-icon{
+                        display: block;
+                        position: relative;
+                         top: -3px;
+                    }
+                }
+                .text{
+                    width: 580px;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    margin-top: 30px;
+
+                    .comment{
+                        width: 100%;
+                        height: auto;
+                        background-color: #e3eeff;
+                        border-radius: 10px;
+                        margin-bottom: 30px;
+                        padding: 0 15px 15px;
+
+                        .comment_header{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: flex-start;
+                            align-items: center;
+                            position: relative;
+                            left: -75px;
+
+                            .Image{
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50%;
+                                background-color: rgb(15, 37, 37);
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                margin-right: 25px;
+                            }
+                            .Name{
+                                font-size: 22px;
+                                font-weight: 600px;
+                            }
+                        }
+                        p{
+                            margin-top: -12px;
+                            margin-bottom: 5px;
+                            font-size: 12px;
+                            color: #8f92ff;
+                        }
+                        .comment_text{
+                            font-size: 16px;
+                            font-family: 
+                        }
+                    }
+                }
+            }
+        }
+        .other_window{
+            width: 200px;
+            height: 1000px;
+            background-color: green;
+        }
+    }
     
 `;
 

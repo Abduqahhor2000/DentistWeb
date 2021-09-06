@@ -4,6 +4,37 @@ import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { doc, getDoc } from "firebase/firestore"; 
 import { db } from "../configs/firebase";
+import { BsEye, 
+         CgComment,
+         BsFillHeartFill,
+         BsHeart,
+         FaShareAlt,
+         BiSend,
+         FaRegCommentDots } from "react-icons/all";
+
+const timeConverteToString = (ts) => {
+    console.log(ts);
+    const time = new Date(ts * 26);
+    const [day, month, year] = [time.getDate(), time.getMonth(), time.getFullYear()];
+    console.log(year);
+    let monthName = "";
+    switch(month){
+        case 0: monthName = "january";  break; 
+        case 1: monthName = "february"; break;
+        case 2: monthName = "march";    break;
+        case 3: monthName = "april";    break;
+        case 4: monthName = "may";      break;
+        case 5: monthName = "june";     break;
+        case 6: monthName = "july";     break;
+        case 7: monthName = "august";   break; 
+        case 8: monthName = "september";break; 
+        case 9: monthName = "oktober";  break; 
+        case 10: monthName = "november";break; 
+        case 11: monthName = "december";break; 
+        default: monthName= "";   
+    }
+    return `${day} ${monthName} ${year}`;
+} 
 
 export default function ViewArticle () {
     const params = useParams();
@@ -42,13 +73,13 @@ export default function ViewArticle () {
         const convertation = article.text.meanText.map((item) => {
             switch(item.type) {
                 case "text": {
-                    return (<div><p>{item.text}</p></div>)
+                    return (<div className="text"><p>{item.text}</p></div>)
                 }   
                 case "video": {
-                    return (<div><iframe width="932" height="524" src={item.videoURL} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>)
+                    return (<div className="video"><iframe src={item.videoURL} title="YouTube video player" allowFullScreen></iframe></div>)
                 }  
                 case "photo": {
-                    return (<div><div style={{backgroundImage: `url(${item.photoURL})`, width: "600px", height: "400px"}}></div></div>)
+                    return (<div className="article_photo"><img src={item.photoURL} alt="Bu yerda rasm bor edi." ></img></div>)
                 }
                 default: {
                     return null;
@@ -74,24 +105,60 @@ export default function ViewArticle () {
     return(
         <>
             {isLoading ? <div>salom</div> :
-                <div>
+                <>
                     <BlogComponent.ViewArticle>
-                        <div>
-                            <div>
-                                <div>
+                        <div className="article_window">
+                            <div className="article">
+                                <div className="header_text">
                                     <h2>{article.text.headerText}</h2>
                                 </div>
-                                {converted}
+                                <div className="status">
+                                    <div className="info">
+                                        <span className="date">31.08.2021</span>
+                                        <span><BsEye className="view"/> 142</span>
+                                        <span><CgComment className="comment"/> {article.data.comments.length}</span>
+                                    </div>
+                                    <div className="like_share">
+                                        <div>
+                                            <BsFillHeartFill className="like liked Display_none"/>
+                                            <BsHeart className="like"/>
+                                            <span> {article.data.likes.length}</span>
+                                        </div>
+                                        <div>
+                                            <FaShareAlt className="share"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                {converted.map((item, index) => {
+                                    return <div key={index}>{item}</div>
+                                })}
                             </div>
-                            <div className="comments">
-        
-                            </div>
+                             <div className="comments">
+                                <div className="input">
+                                    <div><span className="comment_icon"><FaRegCommentDots/></span><span>Comments</span></div>
+                                    <input type="text" placeholder="Write comment here..."></input>
+                                    <button><span className="send-icon"><BiSend /></span></button>
+                                </div>  
+                                <div className="text">
+                                    {article.data.comments.map((item, index) => {
+                                        console.log(item);
+                                        return (<div className="comment" key={index}>
+                                                    <div className="comment_header">
+                                                        <div className="Image" style={{backgroundImage: `url(${item.createdBy.photo})`, width: "50px", height: "50px"}}></div>
+                                                        <div className="Name">{item.createdBy.userName}</div>
+                                                    </div>
+                                                    <p>{timeConverteToString(item.createdBy.createdAt)}</p>
+                                                    <div className="comment_text">{item.text}</div>
+                                                </div>);
+                                    })}
+                                </div> 
+                            </div> 
                         </div>
-                        <div>
+                        <div className="other_window">
         
                         </div>
                     </BlogComponent.ViewArticle>
-                </div>}
+                </>}
         </>
         
     )
