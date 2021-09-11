@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BlogComponent from "../styled_components/blog";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
-import { doc, getDoc } from "firebase/firestore"; 
+import { doc, getDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "../configs/firebase";
 import { BsEye, 
          CgComment,
@@ -14,7 +14,7 @@ import { BsEye,
 
 const timeConverteToString = (ts) => {
     console.log(ts);
-    const time = new Date(ts * 26);
+    const time = new Date(ts * 1000);
     const [day, month, year] = [time.getDate(), time.getMonth(), time.getFullYear()];
     console.log(year);
     let monthName = "";
@@ -39,8 +39,10 @@ const timeConverteToString = (ts) => {
 export default function ViewArticle () {
     const params = useParams();
     console.log(params);
-    const [converted, setCanverted] = useState([]);
-    const [isLoading, setIsLoading] = useState({});
+    const [isView, setIsView] = useState(false);
+    const [converted, setCanverted] = useState();
+    const [isLoading, setIsLoading] = useState();
+    const [getLoading, setGetLoading] = useState(true);
     const [article, setArticle] = useState();
     const mamArticle =  useSelector((state) => { 
         if (state?.articles?.articles){
@@ -50,21 +52,52 @@ export default function ViewArticle () {
                 }
                 return false;
             });
+            console.log(demoData);
             return demoData;
         }
         return false; 
     });
-    
-    const getArticle = async () => {
+
+
+    const articleIsView = async () => {
+        setIsView(true); 
         try{
-            if(mamArticle){
-                setArticle(mamArticle);
-            }
+            const docRef = doc(db, "articles", params.id);
+            const docs = await getDoc(docRef);
+            console.log("salolaaaar", docs.data());  
+            const docSnap =  docs.data();
+
+            const article_view = doc(db, "articles", params.id);
+            await updateDoc(article_view, {
+                data:{
+                    coments: docSnap.data.coments,
+                    view: docSnap.data.view + 1, 
+                    createdAt: docSnap.data.createdAt,       
+                    likes: docSnap.data.likes,   
+                    updateAt: docSnap.data.updateAt,    
+                }
+            });
+        }catch(error){
+            console.log(error)
+        }
+    }
+    
+    const getArticle = async () => {  
+        setGetLoading(false);
+        if(mamArticle){
+            setArticle(mamArticle);
+            setIsLoading(true);
+            return;
+        }
+       
+        try{
             const docRef = doc(db, "articles", params.id);
             const docSnap = await getDoc(docRef);
             console.log(docSnap.data());
             setArticle(docSnap.data());
+            setIsLoading(true);
         }catch (error){
+            setIsLoading(true);
             console.log(console.log("bu o'sha", error))
         }
     }
@@ -90,21 +123,21 @@ export default function ViewArticle () {
         setIsLoading(false);
     }
 
-    
     useEffect(() => {
-        if(isLoading){
+        if(getLoading){
             getArticle();
-            if(article){
-                converting();
-            }
+        } 
+        if(isLoading){
+            converting();
         }
-       
+        if(!isView){
+            articleIsView();
+        }
     });
-    
     
     return(
         <>
-            {isLoading ? <div>salom</div> :
+            {!converted ? <div>salom</div> :
                 <>
                     <BlogComponent.ViewArticle>
                         <div className="article_window">
@@ -147,7 +180,7 @@ export default function ViewArticle () {
                                                         <div className="Image" style={{backgroundImage: `url(${item.createdBy.photo})`, width: "50px", height: "50px"}}></div>
                                                         <div className="Name">{item.createdBy.userName}</div>
                                                     </div>
-                                                    <p>{timeConverteToString(item.createdBy.createdAt)}</p>
+                                                    <p>{timeConverteToString(item.createdBy.createdAt.seconds)}</p>
                                                     <div className="comment_text">{item.text}</div>
                                                 </div>);
                                     })}

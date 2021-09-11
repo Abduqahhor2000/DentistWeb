@@ -470,7 +470,7 @@ BlogComponent.ViewArticle = styled.section`
                         }
                         .comment_text{
                             font-size: 16px;
-                            font-family: 
+                            font-family: 'Lora', serif;
                         }
                     }
                 }
