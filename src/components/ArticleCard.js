@@ -1,6 +1,7 @@
 import React from "react";
 import {BsFillHeartFill, BsHeart, FaShareAlt, BsEye, CgComment} from "react-icons/all";
 import { Link } from "react-router-dom";
+import { timeConverteToStringNumber } from "./HelperFunctions";
 
 export default function ArticleCard(props) {
     const article = props.article;
@@ -17,9 +18,9 @@ export default function ArticleCard(props) {
                     </div>
                     <div className="status">
                         <div className="info">
-                            <span className="date">31.08.2021</span>
-                            <span><BsEye className="view"/> 142</span>
-                            <span><CgComment className="comment"/> {article.data.comments.length}</span>
+                            <span className="date">{timeConverteToStringNumber(article.data.createdAt.seconds)}</span>
+                            <span><BsEye className="view"/> {article?.data?.view}</span>
+                            <span><CgComment className="comment"/> {article.data?.comments?.length}</span>
                         </div>
                         <div className="like_share">
                             <div>

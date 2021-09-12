@@ -21,13 +21,13 @@ export default function Blog() {
     });
     
     const getDoc = async () => {
+        if(reduxArticles?.length > 0){
+            setArticles(reduxArticles);
+            console.log(reduxArticles);
+            setIsLoading(false);
+            return;
+        }
         try{
-            if(reduxArticles?.length > 0){
-                setArticles(reduxArticles);
-                console.log(reduxArticles);
-                setIsLoading(false);
-                return;
-            }
             const querySnapshot = await getDocs(collection(db, "articles"));
             let articles = [];
             querySnapshot.forEach((doc) => {

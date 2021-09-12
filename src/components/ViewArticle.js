@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { doc, getDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "../configs/firebase";
+import { timeConverteToString } from "./HelperFunctions";
 import { BsEye, 
          CgComment,
          BsFillHeartFill,
@@ -12,38 +13,17 @@ import { BsEye,
          BiSend,
          FaRegCommentDots } from "react-icons/all";
 
-const timeConverteToString = (ts) => {
-    console.log(ts);
-    const time = new Date(ts * 1000);
-    const [day, month, year] = [time.getDate(), time.getMonth(), time.getFullYear()];
-    console.log(year);
-    let monthName = "";
-    switch(month){
-        case 0: monthName = "january";  break; 
-        case 1: monthName = "february"; break;
-        case 2: monthName = "march";    break;
-        case 3: monthName = "april";    break;
-        case 4: monthName = "may";      break;
-        case 5: monthName = "june";     break;
-        case 6: monthName = "july";     break;
-        case 7: monthName = "august";   break; 
-        case 8: monthName = "september";break; 
-        case 9: monthName = "oktober";  break; 
-        case 10: monthName = "november";break; 
-        case 11: monthName = "december";break; 
-        default: monthName= "";   
-    }
-    return `${day} ${monthName} ${year}`;
-} 
-
 export default function ViewArticle () {
     const params = useParams();
     console.log(params);
+    const [isLike, setIsLike] = useState(false);
+    const [isLikeControl, setIsLikeControl] = useState(false);
     const [isView, setIsView] = useState(false);
     const [converted, setCanverted] = useState();
     const [isLoading, setIsLoading] = useState();
     const [getLoading, setGetLoading] = useState(true);
     const [article, setArticle] = useState();
+    const userID = useSelector((state) => state?.user?.token);
     const mamArticle =  useSelector((state) => { 
         if (state?.articles?.articles){
             const demoData = state.articles.articles.find((item) => {
@@ -61,16 +41,22 @@ export default function ViewArticle () {
 
     const articleIsView = async () => {
         setIsView(true); 
+        let docSnap;
+
         try{
             const docRef = doc(db, "articles", params.id);
             const docs = await getDoc(docRef);
             console.log("salolaaaar", docs.data());  
-            const docSnap =  docs.data();
+            docSnap =  docs.data();
+        }catch(error){
+            console.log(error)
+        }
 
+        try{
             const article_view = doc(db, "articles", params.id);
             await updateDoc(article_view, {
                 data:{
-                    coments: docSnap.data.coments,
+                    comments: docSnap.data.comments,
                     view: docSnap.data.view + 1, 
                     createdAt: docSnap.data.createdAt,       
                     likes: docSnap.data.likes,   
@@ -87,19 +73,23 @@ export default function ViewArticle () {
         if(mamArticle){
             setArticle(mamArticle);
             setIsLoading(true);
+            setIsLikeControl(true);
             return;
         }
-       
+        
         try{
             const docRef = doc(db, "articles", params.id);
             const docSnap = await getDoc(docRef);
             console.log(docSnap.data());
             setArticle(docSnap.data());
             setIsLoading(true);
+            setIsLikeControl(true);
         }catch (error){
             setIsLoading(true);
             console.log(console.log("bu o'sha", error))
         }
+
+        
     }
     
     const converting = () => {  
@@ -122,7 +112,56 @@ export default function ViewArticle () {
         setCanverted(convertation);
         setIsLoading(false);
     }
+    
+    const isLiked = () => {
+        console.log("shuuuuu", article);
+        if(userID){
+            article.data.likes.map((item) => {
+                if(item === userID){
+                    setIsLike(true);
+                    return true;
+                }
+                return false;
+            });
+        }else{
+            setIsLike(false);
+        }      
+        setIsLikeControl(false);
+    }
 
+    const onClickLike = async () => {
+        if(userID){
+            if(!isLike){
+                setIsLike(true);
+                let docSnap;
+
+                try{
+                    const docRef = doc(db, "articles", params.id);
+                    const docs = await getDoc(docRef);
+                    console.log("salolaaaar", docs.data());  
+                    docSnap =  docs.data();
+                }catch(error){
+                    console.log(error)
+                }
+        
+                try{
+                    const article_like = doc(db, "articles", params.id);
+                    await updateDoc(article_like, {
+                        data:{
+                            comments: docSnap.data.comments,
+                            view: docSnap.data.view, 
+                            createdAt: docSnap.data.createdAt,       
+                            likes: [...docSnap.data.likes, userID],   
+                            updateAt: docSnap.data.updateAt,    
+                        }
+                    });
+                }catch(error){
+                    console.log(error)
+                } 
+            }
+        }
+    };
+    
     useEffect(() => {
         if(getLoading){
             getArticle();
@@ -132,6 +171,9 @@ export default function ViewArticle () {
         }
         if(!isView){
             articleIsView();
+        }
+        if(isLikeControl){
+            isLiked();
         }
     });
     
@@ -147,14 +189,14 @@ export default function ViewArticle () {
                                 </div>
                                 <div className="status">
                                     <div className="info">
-                                        <span className="date">31.08.2021</span>
-                                        <span><BsEye className="view"/> 142</span>
-                                        <span><CgComment className="comment"/> {article.data.comments.length}</span>
+                                        <span className="date">{timeConverteToString(article.data.createdAt.seconds)}</span>
+                                        <span><BsEye className="view"/> {article?.data?.view}</span>
+                                        <span><CgComment className="comment"/> {article.data?.comments?.length}</span>
                                     </div>
                                     <div className="like_share">
-                                        <div>
-                                            <BsFillHeartFill className="like liked Display_none"/>
-                                            <BsHeart className="like"/>
+                                        <div className="like_blok" onClick={onClickLike}>
+                                            <BsFillHeartFill className={`liked ${isLike ? "" : "Display_none"}`} />
+                                            <BsHeart className={`like ${isLike ? "Display_none" : ""}`}/>
                                             <span> {article.data.likes.length}</span>
                                         </div>
                                         <div>
@@ -170,7 +212,7 @@ export default function ViewArticle () {
                                 <div className="input">
                                     <div><span className="comment_icon"><FaRegCommentDots/></span><span>Comments</span></div>
                                     <input type="text" placeholder="Write comment here..."></input>
-                                    <button><span className="send-icon"><BiSend /></span></button>
+                                    <span className="send-icon"><BiSend className="sendIcon" /></span>
                                 </div>  
                                 <div className="text">
                                     {article.data.comments.map((item, index) => {

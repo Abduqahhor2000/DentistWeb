@@ -322,12 +322,19 @@ BlogComponent.ViewArticle = styled.section`
                         display: flex;
                         justify-content: space-around;
                         width: 180px;
-    
-                        .like{
-                            font-size: 16px;
-                            position: relative;
-                            top: 3px; 
-                            color: #ff4949;
+
+                        .like_blok{       
+                            &:hover {
+                                cursor: pointer;
+                            }
+                            
+
+                            .like, .liked{
+                                font-size: 16px;
+                                position: relative;
+                                top: 3px; 
+                                color: #ff4949;
+                            }
                         }
     
                         .share{
@@ -387,6 +394,7 @@ BlogComponent.ViewArticle = styled.section`
                     background-color: #0c2556;
                     padding: 10px;
                     border-radius: 10px 10px 0 0;
+                    position: relative;
 
                     div{
                         display: flex;
@@ -410,17 +418,28 @@ BlogComponent.ViewArticle = styled.section`
                         padding-left: 10px;
                         height: 40px;
                     }
-                    button{
-                        width: 60px;
-                        height: 40px;
-                        font-size: 30px;
-                        position: relative;
-                        top: 11px;
-                    }
                     .send-icon{
                         display: block;
-                        position: relative;
-                         top: -3px;
+                        width: 60px;
+                        height: 45px;
+                        font-size: 40px;
+                        position: absolute;
+                        top: 51px;
+                        right: 0px;
+                        background-color: white;
+                        color: #0c2556;
+
+                        &:hover {
+                            color: #0157ff;
+                            cursor: pointer;
+                        }
+
+                        .sendIcon{
+                            position: relative;
+                            right: 0px;
+                            top: -4px;
+    
+                        }
                     }
                 }
                 .text{
