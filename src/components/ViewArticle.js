@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import BlogComponent from "../styled_components/blog";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { doc, getDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "../configs/firebase";
 import { timeConverteToString } from "./HelperFunctions";
+import { Comments } from "./Comments"; 
 import { BsEye, 
          CgComment,
          BsFillHeartFill,
          BsHeart,
-         FaShareAlt,
-         BiSend,
-         FaRegCommentDots } from "react-icons/all";
+         FaShareAlt} from "react-icons/all";
 
 export default function ViewArticle () {
     const params = useParams();
+    const history = useHistory();
     console.log(params);
     const [isLike, setIsLike] = useState(false);
     const [isLikeControl, setIsLikeControl] = useState(false);
@@ -80,7 +80,7 @@ export default function ViewArticle () {
         try{
             const docRef = doc(db, "articles", params.id);
             const docSnap = await getDoc(docRef);
-            console.log(docSnap.data());
+            console.log("-----", docSnap.data());
             setArticle(docSnap.data());
             setIsLoading(true);
             setIsLikeControl(true);
@@ -88,7 +88,6 @@ export default function ViewArticle () {
             setIsLoading(true);
             console.log(console.log("bu o'sha", error))
         }
-
         
     }
     
@@ -159,6 +158,8 @@ export default function ViewArticle () {
                     console.log(error)
                 } 
             }
+        }else{
+            history.push("/sign-in");
         }
     };
     
@@ -208,26 +209,7 @@ export default function ViewArticle () {
                                     return <div key={index}>{item}</div>
                                 })}
                             </div>
-                             <div className="comments">
-                                <div className="input">
-                                    <div><span className="comment_icon"><FaRegCommentDots/></span><span>Comments</span></div>
-                                    <input type="text" placeholder="Write comment here..."></input>
-                                    <span className="send-icon"><BiSend className="sendIcon" /></span>
-                                </div>  
-                                <div className="text">
-                                    {article.data.comments.map((item, index) => {
-                                        console.log(item);
-                                        return (<div className="comment" key={index}>
-                                                    <div className="comment_header">
-                                                        <div className="Image" style={{backgroundImage: `url(${item.createdBy.photo})`, width: "50px", height: "50px"}}></div>
-                                                        <div className="Name">{item.createdBy.userName}</div>
-                                                    </div>
-                                                    <p>{timeConverteToString(item.createdBy.createdAt.seconds)}</p>
-                                                    <div className="comment_text">{item.text}</div>
-                                                </div>);
-                                    })}
-                                </div> 
-                            </div> 
+                            <Comments article={article} ID={params.id} />
                         </div>
                         <div className="other_window">
         
