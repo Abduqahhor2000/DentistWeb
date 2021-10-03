@@ -21,23 +21,8 @@ export default function ViewArticle () {
     const [isView, setIsView] = useState(false);
     const [converted, setCanverted] = useState();
     const [isLoading, setIsLoading] = useState();
-    const [getLoading, setGetLoading] = useState(true);
     const [article, setArticle] = useState();
     const userID = useSelector((state) => state?.user?.token);
-    const mamArticle =  useSelector((state) => { 
-        if (state?.articles?.articles){
-            const demoData = state.articles.articles.find((item) => {
-                if(item.id === params.id){
-                    return true;
-                }
-                return false;
-            });
-            console.log(demoData);
-            return demoData;
-        }
-        return false; 
-    });
-
 
     const articleIsView = async () => {
         setIsView(true); 
@@ -48,8 +33,12 @@ export default function ViewArticle () {
             const docs = await getDoc(docRef);
             console.log("salolaaaar", docs.data());  
             docSnap =  docs.data();
+            setArticle(docSnap);   
+            setIsLoading(true);
+            setIsLikeControl(true);
         }catch(error){
-            console.log(error)
+            console.log(error);
+            setIsLoading(true);
         }
 
         try{
@@ -66,29 +55,6 @@ export default function ViewArticle () {
         }catch(error){
             console.log(error)
         }
-    }
-    
-    const getArticle = async () => {  
-        setGetLoading(false);
-        if(mamArticle){
-            setArticle(mamArticle);
-            setIsLoading(true);
-            setIsLikeControl(true);
-            return;
-        }
-        
-        try{
-            const docRef = doc(db, "articles", params.id);
-            const docSnap = await getDoc(docRef);
-            console.log("-----", docSnap.data());
-            setArticle(docSnap.data());
-            setIsLoading(true);
-            setIsLikeControl(true);
-        }catch (error){
-            setIsLoading(true);
-            console.log(console.log("bu o'sha", error))
-        }
-        
     }
     
     const converting = () => {  
@@ -164,9 +130,6 @@ export default function ViewArticle () {
     };
     
     useEffect(() => {
-        if(getLoading){
-            getArticle();
-        } 
         if(isLoading){
             converting();
         }

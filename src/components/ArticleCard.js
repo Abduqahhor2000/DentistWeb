@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {BsFillHeartFill, BsHeart, FaShareAlt, BsEye, CgComment} from "react-icons/all";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { timeConverteToStringNumber } from "./HelperFunctions";
 
 export default function ArticleCard(props) {
     const article = props.article;
+    const [isLike, setIsLike] = useState(false);
+    const [isLikeControl, setIsLikeControl] = useState(true);
+    const userID = useSelector((state) => state?.user?.token);
+
+    const isLiked = () => {
+        console.log("shuuuuu", article);
+        if(userID){
+            article.data.likes.map((item) => {
+                if(item === userID){
+                    setIsLike(true);
+                    return true;
+                }
+                return false;
+            });
+        }else{
+            setIsLike(false);
+        }      
+        setIsLikeControl(false);
+    }
+
+    useEffect(() => {
+        if(isLikeControl) {
+           isLiked();
+        }
+    });
 
     return(
         <div key={article.id}>
@@ -24,8 +50,8 @@ export default function ArticleCard(props) {
                         </div>
                         <div className="like_share">
                             <div>
-                                <BsFillHeartFill className="like liked Display_none"/>
-                                <BsHeart className="like"/>
+                                <BsFillHeartFill className={`like liked ${isLike ? "" : "Display_none"}`} />
+                                <BsHeart className={`like ${isLike ? "Display_none" : ""}`}/>
                                 <span> {article.data.likes.length}</span>
                             </div>
                             <div>
