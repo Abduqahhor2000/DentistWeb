@@ -10,7 +10,7 @@ export const Comments = (props) => {
     const history = useHistory();
     const user = useSelector((state) => state?.user?.user);
     const token = useSelector((state) => state?.user?.token);
-    const comments = props.article.data.comments;
+    const [comments, setComments] = useState(props.article.data.comments);
     const articleID = props.ID;
     const [comment, setComment] = useState({
         createdBy: {
@@ -53,16 +53,18 @@ export const Comments = (props) => {
             const write_comment = doc(db, "articles", articleID);
             await updateDoc(write_comment, {
                 data:{
-                    comments: [...docSnap.data.comments, comment],
+                    comments: [comment, ...docSnap.data.comments],
                     view: docSnap.data.view, 
                     createdAt: docSnap.data.createdAt,       
                     likes: docSnap.data.likes,   
                     updateAt: docSnap.data.updateAt,    
                 }
             });
+            setComments(() => [comment, ...docSnap.data.comments]);
         }catch(error){
             console.log(error)
         }
+        setComment({text: ""});
     }
 
     return (
