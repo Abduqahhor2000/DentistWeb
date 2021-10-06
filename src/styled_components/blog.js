@@ -14,6 +14,9 @@ BlogComponent.LastArticle = styled.section`
         @media (max-width: 1220px){
             flex-direction: column;
         }
+        @media (max-width: 1100px){
+            
+        }
         @media (max-width: 899px){
             width: 360px;
             flex-direction: column;
@@ -270,11 +273,29 @@ BlogComponent.ViewArticle = styled.section`
         justify-content: space-around;
         align-items: top;
 
+        @media (max-width: 500px) {
+            max-width: 300px;
+            min-width: 300px;
+        }
+
         .article_window{
-            width: 800px;
+            width: 950px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+
+            @media (max-width: 1500px){
+                width: 800px;
+            }
+            @media (max-width: 1350px){
+                width: 650px;
+            }
+            @media (max-width: 1250px){
+                width: 600px;
+            }
+            @media (max-width: 1100px){
+                width: 90%;
+            }
             
             .article{
                 width: 100%;
@@ -499,6 +520,10 @@ BlogComponent.ViewArticle = styled.section`
             width: 200px;
             height: 1000px;
             background-color: green;
+
+            @media (max-width: 1100px){
+                display: none;
+            }
         }
     }
     
