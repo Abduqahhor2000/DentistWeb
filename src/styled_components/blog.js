@@ -282,6 +282,7 @@ BlogComponent.ViewArticle = styled.section`
 
             @media (max-width: 1000px){
                 width: 95%;
+                padding: 0;
             }
             
             .article{
@@ -330,7 +331,7 @@ BlogComponent.ViewArticle = styled.section`
                     .like_share{
                         display: flex;
                         justify-content: space-around;
-                        width: 180px;
+                        width: 25%;
 
                         .like_blok{       
                             &:hover {
@@ -412,6 +413,10 @@ BlogComponent.ViewArticle = styled.section`
                     border-radius: 10px 10px 0 0;
                     position: relative;
 
+                    @media (max-width: 1200px){
+                        width: 100%;
+                    }
+
                     div{
                         display: flex;
                         justify-content: flex-start;
@@ -430,9 +435,10 @@ BlogComponent.ViewArticle = styled.section`
                     }
                     input{
                         display: inline-block;
-                        width: 620px;
+                        width: calc(100% - 60px);
                         padding-left: 10px;
                         height: 40px;
+
                     }
                     .send-icon{
                         display: block;
@@ -444,6 +450,8 @@ BlogComponent.ViewArticle = styled.section`
                         right: 0px;
                         background-color: white;
                         color: #0c2556;
+
+
 
                         &:hover {
                             color: #0157ff;
@@ -459,19 +467,24 @@ BlogComponent.ViewArticle = styled.section`
                     }
                 }
                 .text{
-                    width: 580px;
+                    width: 700px;
                     height: auto;
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
-                    margin-top: 30px;
+                    margin-top: 20px;
+                    align-items: flex-end;
+                    
+                    @media (max-width: 1200px){
+                        width: 100%;
+                    }
 
                     .comment{
-                        width: 100%;
+                        width: calc(100% - 60px);
                         height: auto;
                         background-color: #e3eeff;
                         border-radius: 10px;
-                        margin-bottom: 30px;
+                        margin-bottom: 20px;
                         padding: 0 15px 15px;
 
                         .comment_header{
@@ -506,6 +519,7 @@ BlogComponent.ViewArticle = styled.section`
                         .comment_text{
                             font-size: 16px;
                             font-family: 'Lora', serif;
+                            overflow-x: hidden;
                         }
                     }
                 }
