@@ -273,28 +273,15 @@ BlogComponent.ViewArticle = styled.section`
         justify-content: space-around;
         align-items: top;
 
-        @media (max-width: 500px) {
-            max-width: 300px;
-            min-width: 300px;
-        }
-
         .article_window{
-            width: 950px;
+            width: calc(100% - 200px);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            padding: 0 20px;
 
-            @media (max-width: 1500px){
-                width: 800px;
-            }
-            @media (max-width: 1350px){
-                width: 650px;
-            }
-            @media (max-width: 1250px){
-                width: 600px;
-            }
-            @media (max-width: 1100px){
-                width: 90%;
+            @media (max-width: 1000px){
+                width: 95%;
             }
             
             .article{
@@ -302,6 +289,7 @@ BlogComponent.ViewArticle = styled.section`
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+               
 
                 .header_text{
                     width: 100%;
@@ -369,7 +357,7 @@ BlogComponent.ViewArticle = styled.section`
                 }
                 .text{
                     width: 100%;
-                    margin-bottom: 30px;
+                    margin-bottom: 20px;
 
                     p{
                         font-size: 18px;
@@ -377,7 +365,7 @@ BlogComponent.ViewArticle = styled.section`
                 }
                 .article_photo{
                     width: 100%;
-                    margin-bottom: 30px;
+                    margin-bottom: 20px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -389,14 +377,21 @@ BlogComponent.ViewArticle = styled.section`
                 }
                 .video{
                     width: 100%;
-                    margin-bottom: 30px;
+                    margin-bottom: 20px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
 
                     iframe{
-                        width: 700px;
+                        width: 100%;
                         height: 400px;
+
+                        @media (max-width: 900px){
+                            height: 300px;
+                        }
+                        @media (max-width: 700px){
+                            height: 200px;
+                        }
                     }
                 }
             
@@ -521,7 +516,7 @@ BlogComponent.ViewArticle = styled.section`
             height: 1000px;
             background-color: green;
 
-            @media (max-width: 1100px){
+            @media (max-width: 1000px){
                 display: none;
             }
         }
