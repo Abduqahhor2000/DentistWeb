@@ -5,12 +5,15 @@ import { doc, getDoc, Timestamp, updateDoc } from "@firebase/firestore";
 import { db } from "../configs/firebase";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { useEffect } from "react";
 
 export const Comments = (props) => {
     const history = useHistory();
     const user = useSelector((state) => state?.user?.user);
     const token = useSelector((state) => state?.user?.token);
-    const [comments, setComments] = useState(props.article.data.comments);
+    const [allComments, setAllComments] = useState(props.article.data.comments);
+    const [commentsLimit, setCommentsLimit] = useState(15);
+    const [showComments, setShowComments] = useState();
     const articleID = props.ID;
     const [comment, setComment] = useState({
         createdBy: {
@@ -20,6 +23,29 @@ export const Comments = (props) => {
         },
         text: "",
     });
+
+    useEffect(()=>{
+        
+    }, []);
+    useEffect(()=>{
+        commentsLimitFunc();
+    }, [commentsLimit]);
+
+    const commentsLimitFunc = () => {
+        let arr = [];
+        if (allComments.length <= commentsLimit){
+            for ( let i = 0; i < allComments.length; i++ ){
+                arr.push(allComments[i]);
+            }
+            setShowComments(arr);
+            return;
+        }
+        for ( let i = 0; i < commentsLimit; i++ ){
+            arr.push(allComments[i]);
+        }
+        setShowComments(arr);  
+        return;
+    }
 
     const onChangeInput = (e) => {
         const text = e.target.value;
@@ -60,7 +86,7 @@ export const Comments = (props) => {
                     updateAt: docSnap.data.updateAt,    
                 }
             });
-            setComments(() => [comment, ...docSnap.data.comments]);
+            setAllComments(() => [comment, ...docSnap.data.comments]);
         }catch(error){
             console.log(error)
         }
@@ -75,7 +101,7 @@ export const Comments = (props) => {
                 <span onClick={writeComment} className="send-icon"><BiSend className="sendIcon" /></span>
             </div>  
             <div className="text">
-                {comments.map((item, index) => {
+                {showComments.map((item, index) => {
                     return (<div className="comment" key={index}>
                                 <div className="comment_header">
                                     <div className="Image" style={{backgroundImage: `url(${item.createdBy.photo})`, width: "50px", height: "50px"}}></div>
