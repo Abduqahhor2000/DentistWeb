@@ -5,16 +5,15 @@ import { doc, getDoc, Timestamp, updateDoc } from "@firebase/firestore";
 import { db } from "../configs/firebase";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { useEffect } from "react";
 
 export const Comments = (props) => {
+    const articleID = props.ID;
     const history = useHistory();
     const user = useSelector((state) => state?.user?.user);
     const token = useSelector((state) => state?.user?.token);
+    const [openCommentsButton, setOpenCommentsButton] = useState(true);
     const [allComments, setAllComments] = useState(props.article.data.comments);
     const [commentsLimit, setCommentsLimit] = useState(15);
-    const [showComments, setShowComments] = useState();
-    const articleID = props.ID;
     const [comment, setComment] = useState({
         createdBy: {
             userName: "",
@@ -24,27 +23,11 @@ export const Comments = (props) => {
         text: "",
     });
 
-    useEffect(()=>{
-        
-    }, []);
-    useEffect(()=>{
-        commentsLimitFunc();
-    }, [commentsLimit]);
-
-    const commentsLimitFunc = () => {
-        let arr = [];
-        if (allComments.length <= commentsLimit){
-            for ( let i = 0; i < allComments.length; i++ ){
-                arr.push(allComments[i]);
-            }
-            setShowComments(arr);
-            return;
+    const numberProgress = (e) => {
+        setCommentsLimit(commentsLimit*2);
+        if( allComments.length <= commentsLimit){
+            setOpenCommentsButton(false);
         }
-        for ( let i = 0; i < commentsLimit; i++ ){
-            arr.push(allComments[i]);
-        }
-        setShowComments(arr);  
-        return;
     }
 
     const onChangeInput = (e) => {
@@ -92,6 +75,12 @@ export const Comments = (props) => {
         }
         setComment({text: ""});
     }
+    
+    // if (allComments.length <= commentsLimit) {
+    //     if(setOpenCommentsButton){
+    //         setOpenCommentsButton(false);
+    //     }
+    // }
 
     return (
         <div className="comments">
@@ -101,16 +90,22 @@ export const Comments = (props) => {
                 <span onClick={writeComment} className="send-icon"><BiSend className="sendIcon" /></span>
             </div>  
             <div className="text">
-                {showComments.map((item, index) => {
-                    return (<div className="comment" key={index}>
-                                <div className="comment_header">
-                                    <div className="Image" style={{backgroundImage: `url(${item.createdBy.photo})`, width: "50px", height: "50px"}}></div>
-                                    <div className="Name">{item.createdBy.userName}</div>
-                                </div>
-                                <p>{timeConverteToString(item.createdBy.createdAt.seconds)}</p>
-                                <div className="comment_text">{item.text}</div>
-                            </div>);
+                {allComments.map((item, index) => {
+                    if (index < commentsLimit){
+                        return (<div className="comment" key={index}>
+                                    <div className="comment_header">
+                                        <div className="Image" style={{backgroundImage: `url(${item.createdBy.photo})`, width: "50px", height: "50px"}}></div>
+                                        <div className="Name">{item.createdBy.userName}</div>
+                                    </div>
+                                    <p>{timeConverteToString(item.createdBy.createdAt.seconds)}</p>
+                                    <div className="comment_text">{item.text}</div>
+                                </div>);
+                    }
+                    return "";
                 })}
+                <div className={`see_comments ${ openCommentsButton ? "" : "Display_none"}`}>
+                    <span onClick={numberProgress}>Next comments</span>
+                </div>
             </div> 
         </div> 
    );

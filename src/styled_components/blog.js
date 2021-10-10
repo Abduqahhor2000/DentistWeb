@@ -521,15 +521,30 @@ BlogComponent.ViewArticle = styled.section`
                             font-family: 'Lora', serif;
                             overflow-x: hidden;
                         }
+                    .see_comments{
+                        display: flex;
+                        justify-content: center;
+
+                        span{
+                            width: auto;
+                            height: 20px;
+                            background-color: #123882;
+                            border-radius: 50%50%;
+                            color: wheat;
+                        }
+                    }    
                     }
                 }
             }
         }
-        .other_window{
-            width: 200px;
-            height: 1000px;
-            background-color: green;
-
+        .other_window{ 
+            position: relative
+            height: 300px;
+            top: 0;
+            padding: 5px;
+            background-color: #cae8ca;
+            border: 2px solid #4CAF50;
+            
             @media (max-width: 1000px){
                 display: none;
             }

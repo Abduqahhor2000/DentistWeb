@@ -175,7 +175,7 @@ export default function ViewArticle () {
                             <Comments article={article} ID={params.id} />
                         </div>
                         <div className="other_window">
-        
+                            salom
                         </div>
                     </BlogComponent.ViewArticle>
                 </>}
