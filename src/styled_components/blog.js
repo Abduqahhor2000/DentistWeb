@@ -267,7 +267,7 @@ BlogComponent.YouLikeArticles = styled.section`
 BlogComponent.ViewArticle = styled.section`
     & {
         width: 100%;
-        min-height: 100vh;
+        height: 3000px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -538,13 +538,16 @@ BlogComponent.ViewArticle = styled.section`
             }
         }
         .other_window{ 
-            position: relative
-            height: 300px;
-            top: 0;
-            padding: 5px;
-            background-color: #cae8ca;
+            width: 200px;
+            height: 100%;
             border: 2px solid #4CAF50;
             
+            .sticky_sitebar{
+                position: -webkit-sticky;
+                position: sticky;
+                top: 200px;
+                background-color: green;
+            }
             @media (max-width: 1000px){
                 display: none;
             }
