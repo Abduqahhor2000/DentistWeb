@@ -73,14 +73,15 @@ export const Comments = (props) => {
         }catch(error){
             console.log(error)
         }
-        setComment({text: ""});
+        setComment({
+            createdBy: {
+                userName: "",
+                photo: "",
+                createdAt: "",
+            },
+            text: "",
+        });
     }
-    
-    // if (allComments.length <= commentsLimit) {
-    //     if(setOpenCommentsButton){
-    //         setOpenCommentsButton(false);
-    //     }
-    // }
 
     return (
         <div className="comments">
