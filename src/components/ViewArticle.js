@@ -6,6 +6,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../configs/firebase";
 import { timeConverteToString } from "./HelperFunctions";
 import { Comments } from "./Comments"; 
+import { StickyContainer, Sticky } from 'react-sticky'; 
 import { BsEye, 
          CgComment,
          BsFillHeartFill,
@@ -144,7 +145,7 @@ export default function ViewArticle () {
     return(
         <>
             {!converted ? <div>salom</div> :
-                <>
+                <div className="view-article">
                     <BlogComponent.ViewArticle>
                         <div className="article_window">
                             <div className="article">
@@ -174,13 +175,19 @@ export default function ViewArticle () {
                             </div>
                             <Comments article={article} ID={params.id} />
                         </div>
+                        <StickyContainer>
+                            <Sticky>
+                              
+                            <Sticky>
+                        </StickyContainer>
                         <div className="other_window">
-                            <div className="sticky_sitebar">
+                            <div className="stickybar">
                                 salom
                             </div>
                         </div>
                     </BlogComponent.ViewArticle>
-                </>}
+                   
+                </div>}
         </>
         
     )

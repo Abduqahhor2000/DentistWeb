@@ -264,17 +264,12 @@ BlogComponent.YouLikeArticles = styled.section`
     }
 `;
 
-BlogComponent.ViewArticle = styled.section`
+BlogComponent.ViewArticle = styled.div`
     & {
         width: 100%;
-        height: 3000px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: top;
 
         .article_window{
-            width: calc(100% - 200px);
+            width: calc(100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -541,17 +536,17 @@ BlogComponent.ViewArticle = styled.section`
             width: 200px;
             height: 100%;
             border: 2px solid #4CAF50;
-            
-            .sticky_sitebar{
+            box-sizing: border-box;
+
+            .stickybar{
+                height: 300px;
+                display: block;
                 position: -webkit-sticky;
                 position: sticky;
-                top: 200px;
+                top: 0;
                 background-color: green;
-            }
-            @media (max-width: 1000px){
-                display: none;
-            }
-        }
+            }  
+        }      
     }
     
 `;
