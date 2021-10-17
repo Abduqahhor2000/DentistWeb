@@ -18,3 +18,16 @@
   h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0px;
   }
+
+  .loading_container{
+    width: 100%;
+    height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loader{
+    width: 200px;
+    height: 200px;
+  }

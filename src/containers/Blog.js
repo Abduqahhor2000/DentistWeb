@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../configs/firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addArticles } from "../store/actions/articlesAction";
+import Loader from "../components/Loader";
 
 export default function Blog() {
     const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export default function Blog() {
     }
 
     return(<>
-    {isLoading ? <div>salom</div> : 
+    {isLoading ? <Loader/> : 
         <div className="BlogPage">
             <BlogComponent.LastArticle>
                  <div className="blog_card">

@@ -25,7 +25,7 @@ export const Comments = (props) => {
 
     const numberProgress = (e) => {
         setCommentsLimit(commentsLimit*2);
-        if( allComments.length <= commentsLimit){
+        if( allComments.length <= (commentsLimit * 2)){
             setOpenCommentsButton(false);
         }
     }
@@ -105,7 +105,7 @@ export const Comments = (props) => {
                     return "";
                 })}
                 <div className={`see_comments ${ openCommentsButton ? "" : "Display_none"}`}>
-                    <span onClick={numberProgress}>Next comments</span>
+                    <div onClick={numberProgress}>Next comments</div>
                 </div>
             </div> 
         </div> 
