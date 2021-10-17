@@ -265,19 +265,18 @@ BlogComponent.YouLikeArticles = styled.section`
 `;
 
 BlogComponent.ViewArticle = styled.div`
-    & {
+    & { 
         width: 100%;
-
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        
         .article_window{
-            width: calc(100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            width: calc(100% - 200px);
             padding: 0 20px;
-
+          
             @media (max-width: 1000px){
-                width: 95%;
-                padding: 0;
+                width: 100%;
             }
             
             .article{
@@ -516,19 +515,23 @@ BlogComponent.ViewArticle = styled.div`
                             font-family: 'Lora', serif;
                             overflow-x: hidden;
                         }
-                    .see_comments{
-                        display: flex;
-                        justify-content: center;
-
-                        span{
-                            width: auto;
-                            height: 20px;
-                            background-color: #123882;
-                            border-radius: 50%50%;
-                            color: wheat;
-                        }
-                    }    
                     }
+                .see_comments{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;                
+                    div{
+                        width: auto;
+                        height: 20px;
+                        background-color: #123882;
+                        border-radius: 10%;
+                        color: wheat;
+                        margin: 0 0 20px 0;
+                        padding: 15px;
+                        line-height: 0;
+                    }
+                }    
                 }
             }
         }
@@ -538,12 +541,14 @@ BlogComponent.ViewArticle = styled.div`
             border: 2px solid #4CAF50;
             box-sizing: border-box;
 
+            @media (max-width: 1000px) {
+                display: none;
+            }
+
             .stickybar{
-                height: 300px;
                 display: block;
-                position: -webkit-sticky;
-                position: sticky;
-                top: 0;
+                width: 100%;
+                height: 100vh;
                 background-color: green;
             }  
         }      
