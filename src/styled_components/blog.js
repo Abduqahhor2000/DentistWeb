@@ -444,7 +444,7 @@ BlogComponent.ViewArticle = styled.div`
                         right: 0px;
                         background-color: white;
                         color: #0c2556;
-
+                        padding-left: 10px;
 
 
                         &:hover {

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaRegCommentDots, BiSend } from "react-icons/all";
 import { timeConverteToString } from "./HelperFunctions";
 import { doc, getDoc, Timestamp, updateDoc } from "@firebase/firestore";
 import { db } from "../configs/firebase";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import HashLoader from "react-spinners/HashLoader";
+import { css } from "@emotion/react";
 
 export const Comments = (props) => {
     const articleID = props.ID;
@@ -14,6 +16,13 @@ export const Comments = (props) => {
     const [openCommentsButton, setOpenCommentsButton] = useState(true);
     const [allComments, setAllComments] = useState(props.article.data.comments);
     const [commentsLimit, setCommentsLimit] = useState(15);
+    const [spinner_loading, setSpinner_loading] = useState(false);
+    const inputCommentRef = useRef(null);
+    const [errorMessage, setErrorMessage] = useState({
+        isTrue: false,
+        color: "",
+        text: "",
+    });
     const [comment, setComment] = useState({
         createdBy: {
             userName: "",
@@ -47,6 +56,15 @@ export const Comments = (props) => {
             history.push("/sign-in");
             return;
         }
+        if(comment.text.length < 4){
+            setErrorMessage({
+                isTrue: true,
+                color: "red",
+                text: "Matin yetarlicha uzun emas!"
+            });
+            return;
+        }
+        setSpinner_loading(true);
         let docSnap;
         console.log(comment);
         try{
@@ -70,6 +88,12 @@ export const Comments = (props) => {
                 }
             });
             setAllComments(() => [comment, ...docSnap.data.comments]);
+            setSpinner_loading(false);
+            setErrorMessage({
+                isTrue: true,
+                color: "green",
+                text: "Xabar muvaffaqiyatli yuborildi!"
+            });
         }catch(error){
             console.log(error)
         }
@@ -83,13 +107,27 @@ export const Comments = (props) => {
         });
     }
 
+    // useEffect( () => {
+    //     if(errorMessage.isTrue){
+    //         inputCommentRef.current.focusout
+    //     }
+    // });
+
+    const override = css`
+        display: block;
+        margin: 0 auto;
+        border-color: red;
+    `;
+
     return (
         <div className="comments">
             <div className="input">
                 <div><span className="comment_icon"><FaRegCommentDots/></span><span>Comments</span></div>
-                <input name="text" value={comment.text} onChange={onChangeInput} type="text" placeholder="Write comment here..."></input>
-                <span onClick={writeComment} className="send-icon"><BiSend className="sendIcon" /></span>
+                <input ref={inputCommentRef} name="text" value={comment.text} onChange={onChangeInput} type="text" placeholder="Write comment here..."></input>
+                {spinner_loading ? <span className="loading-control"><HashLoader color={"#123882"}  css={override} size={35} /></span> :
+                    <span className="send-icon" onClick={writeComment}><BiSend className="sendIcon" /></span>}   
             </div>  
+                {errorMessage.isTrue ? <div style={{color: errorMessage.color}}>{errorMessage.text}</div> : ""}
             <div className="text">
                 {allComments.map((item, index) => {
                     if (index < commentsLimit){
