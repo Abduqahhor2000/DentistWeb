@@ -8,6 +8,7 @@ import { timeConverteToString } from "./HelperFunctions";
 import { Comments } from "./Comments"; 
 import { StickyContainer, Sticky } from 'react-sticky'; 
 import Loader from "./Loader";
+import controlNavigator from "./controlNavigator";
 import { BsEye, 
          CgComment,
          BsFillHeartFill,
@@ -26,6 +27,10 @@ export default function ViewArticle () {
     const [article, setArticle] = useState();
     const userID = useSelector((state) => state?.user?.token);
 
+    useEffect( () => {
+        controlNavigator("/blog");
+    });
+    
     const articleIsView = async () => {
         setIsView(true); 
         let docSnap;
