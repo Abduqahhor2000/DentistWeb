@@ -13,7 +13,6 @@ import { BsEye,
          BsFillHeartFill,
          BsHeart,
          FaShareAlt} from "react-icons/all";
-import {ControlNavigator} from "./ControlNavigator"
 
 export default function ViewArticle () {
     const params = useParams();
@@ -27,7 +26,6 @@ export default function ViewArticle () {
     const [article, setArticle] = useState();
     const userID = useSelector((state) => state?.user?.token);
 
-    
     const articleIsView = async () => {
         setIsView(true); 
         let docSnap;
@@ -146,7 +144,7 @@ export default function ViewArticle () {
     });
     
     return(
-        <>  <ControlNavigator position={"/blog"}/>
+        <>
             {!converted  ? <Loader />  :
                 <div className="view-article">
                     <BlogComponent.ViewArticle>
