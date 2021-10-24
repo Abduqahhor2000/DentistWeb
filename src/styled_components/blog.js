@@ -556,4 +556,10 @@ BlogComponent.ViewArticle = styled.div`
     
 `;
 
+BlogComponent.Cantact_us = styled.div`
+    &{
+        width: 50%;
+    }
+`;
+
 export default BlogComponent;
