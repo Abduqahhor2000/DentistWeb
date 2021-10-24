@@ -12,14 +12,15 @@ import {FaTooth,
     RiHealthBookLine,
     FiTwitch,
     AiOutlineHome,
+    IoPersonSharp
    } from 'react-icons/all';
 
 export default function Panel () {
   const userID = useSelector(state => state.user.token);
   const user = useSelector(state => state.user.user);
+  const navigator = useSelector(state => state?.navigator.navigator);
   const dispatch = useDispatch();
   const [menuButton, setMenuButton] = useState("");
-  const [activeMenuLi, setActiveMenuLi] = useState(1);
   
   const menuHendler = () => {
     const menu = document.querySelector(".menu");
@@ -49,10 +50,6 @@ export default function Panel () {
    dispatch( clearUserID() );
   } 
 
-  const menuListClick = (number) => {
-      setActiveMenuLi(number);
-  }
-
     return (
        <div className="home">
         <div className={`menu`} id="menu">
@@ -63,11 +60,12 @@ export default function Panel () {
           </div>
           <div className="menu-list">
               <ul>
-                  <Link onClick={() => menuListClick(1)} className="router-link" to="/home"><li className={`${activeMenuLi === 1 ? "active-list" : ""}`}><AiOutlineHome className="menu-icons" /> <span>Home</span></li></Link>
-                  <Link onClick={() => menuListClick(2)} className="router-link" to="/blog"><li className={`${activeMenuLi === 2 ? "active-list" : ""}`}><FiTwitch className="menu-icons" /> <span>Blog</span></li></Link>
-                  <Link onClick={() => menuListClick(3)} className="router-link" to="/services"><li className={`${activeMenuLi === 3 ? "active-list" : ""}`}><RiHealthBookLine className="menu-icons" /> <span>Services</span></li></Link>
-                  <Link onClick={() => menuListClick(4)} className="router-link" to="/cantact_us"><li className={`${activeMenuLi === 4 ? "active-list" : ""}`}><AiFillPhone className="menu-icons" /> <span>Cantact us</span></li></Link>
-                  <Link onClick={() => menuListClick(5)} className="router-link" to="/settings"><li className={`${activeMenuLi ===5 ? "active-list" : ""}`}><FiSettings className="menu-icons" /> <span>Settings</span></li></Link>
+                  <Link className="router-link" to="/admin"><li className={`${navigator === "/admin" ? "active-list" : ""}`}><IoPersonSharp className="menu-icons" /> <span>Admin</span></li></Link>
+                  <Link className="router-link" to="/home"><li className={`${navigator === "/home" ? "active-list" : ""}`}><AiOutlineHome className="menu-icons" /> <span>Home</span></li></Link>
+                  <Link className="router-link" to="/blog"><li className={`${navigator === "/blog" ? "active-list" : ""}`}><FiTwitch className="menu-icons" /> <span>Blog</span></li></Link>
+                  <Link className="router-link" to="/services"><li className={`${navigator === "/services" ? "active-list" : ""}`}><RiHealthBookLine className="menu-icons" /> <span>Services</span></li></Link>
+                  <Link className="router-link" to="/cantact_us"><li className={`${navigator === "/cantact_us" ? "active-list" : ""}`}><AiFillPhone className="menu-icons" /> <span>Cantact us</span></li></Link>
+                  <Link className="router-link" to="/settings"><li className={`${navigator === "/settings" ? "active-list" : ""}`}><FiSettings className="menu-icons" /> <span>Settings</span></li></Link>
               </ul>
           </div>
         </div>

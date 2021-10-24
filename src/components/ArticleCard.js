@@ -11,7 +11,6 @@ export default function ArticleCard(props) {
     const userID = useSelector((state) => state?.user?.token);
 
     const isLiked = () => {
-        console.log("shuuuuu", article);
         if(userID){
             article.data.likes.map((item) => {
                 if(item === userID){

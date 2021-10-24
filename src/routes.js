@@ -3,6 +3,7 @@ import Blog from './containers/Blog';
 import Services from "./containers/Services";
 import Cantact_us from "./containers/Cantact_us";
 import Settings from "./containers/Settings";
+import Admin from "./containers/Admin";
 import Panel from "./containers/Panel";
 import SignIn from "./containers/SignIn";
 import SignUp from "./containers/SignUp";
@@ -10,6 +11,13 @@ import ViewArticle from "./components/ViewArticle";
 
 const routes = {
     menu: [
+        {
+            key: "admin",
+            path: "/admin",
+            component: Admin,
+            exact: true,
+            icon: null,
+        },
         {
             key: "blog",
             path: "/blog",

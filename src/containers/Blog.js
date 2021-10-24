@@ -8,6 +8,7 @@ import { db } from "../configs/firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addArticles } from "../store/actions/articlesAction";
 import Loader from "../components/Loader";
+import {ControlNavigator} from "../components/ControlNavigator";
 
 export default function Blog() {
     const dispatch = useDispatch();
@@ -42,6 +43,7 @@ export default function Blog() {
     }
 
     return(<>
+     <ControlNavigator position={"/blog"}/>
     {isLoading ? <Loader/> : 
         <div className="BlogPage">
             <BlogComponent.LastArticle>
