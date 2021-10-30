@@ -6,6 +6,7 @@ import { addUserID } from "../store/actions/userIdAction";
 import { useHistory } from "react-router-dom";
 import { auth } from "../configs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 export default function SignIn () {
     const dispatch = useDispatch();
@@ -14,10 +15,12 @@ export default function SignIn () {
         email: '',
         password: '',
     });
-    // const [errorMsg, setErrorMsg] = useState({
-    //     code: "",
-    //     massega: "",
-    // });
+    const [errorMsg, setErrorMsg] = useState({
+        code: "",
+        massega: "",
+    });
+
+    console.log(errorMsg);
 
     const hendlerInputChange = (e) => {
         const {name, value} = e.target;
@@ -36,18 +39,21 @@ export default function SignIn () {
           history.push("/balance");
         } catch (error) {
           console.log(error);
-          // setErrorMsg({ code: error.code, message: error.message })
+          setErrorMsg({ code: error.code, message: error.message })
         }
-      } 
-      const {email, password} = state;
+    } 
+
+    const {email, password} = state;
 
     return(
         <div>
             <Row>
-                <Col className="sign-in-image" span={12}></Col>
-                <Col className="sign-in-right" span={12}>
-                    <Row className="sign-in-form" justify="center "  align="middle" >
-                        <Col span={12}>
+                <Col span={12} className="sign-in-image"></Col>
+                <Col className="sign-in-right">
+                    <Row className="sign-in-form"   align="middle" >
+                        <Col className="sign-in-div">
+                          <h1>Sign in</h1>
+                          <p>Saytda ro'xatdan hali o'tmagan bo'lsangiz <Link to="sign-up">Sign up</Link> ga kiring!</p><br/>
                         <Form
                             layout="vertical"
                             name="basic"
@@ -102,7 +108,7 @@ export default function SignIn () {
                                 span: 16,
                               }}
                             >
-                              <Button disabled={!(email) && !(password)} onClick={handleLogin}>
+                              <Button disabled={!(email) || !(password)} onClick={handleLogin}>
                                 Submit
                               </Button>
                             </Form.Item>

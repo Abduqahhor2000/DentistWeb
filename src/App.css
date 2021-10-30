@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
 
 *{
     box-sizing: border-box;
@@ -30,4 +31,45 @@
   .loader{
     width: 200px;
     height: 200px;
+  }
+
+  .sign-in-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;;
+  }
+
+  .sign-in-div{
+    width: 400px;
+    height: auto;
+  }
+  
+  .sign-in-div h1{
+    text-align: center;
+    color: #0c2556;
+    font-family: 'Days One', sans-serif;
+    font-size: 36px;
+  }
+
+  .sign-in-right{
+    width: 50%;
+  }
+
+  @media (max-width: 900px){
+    .sign-in-div{
+      width: 300px;
+    }
+  }
+  @media (max-width: 650px){
+    .sign-in-image{
+      display: none;
+    }
+    .sign-in-right{
+      flex: 0 0 100% ;
+      width: 100% ;
+    }
+    .sign-in-div{
+      width: 400px;
+    }
   }
