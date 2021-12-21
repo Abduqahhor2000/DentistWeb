@@ -39,6 +39,9 @@ export default function SignIn () {
           history.push("/balance");
         } catch (error) {
           console.log(error);
+          if (error.code) {
+
+          }
           setErrorMsg({ code: error.code, message: error.message })
         }
     } 
@@ -68,7 +71,7 @@ export default function SignIn () {
                             }}
                         >
                             <Form.Item
-                              label="EMAIL"
+                              label="username"
                               name="username"
                               rules={[
                                 {
